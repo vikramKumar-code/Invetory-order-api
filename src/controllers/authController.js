@@ -28,8 +28,10 @@ exports.register = async (req, res) => {
             });
         }
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         // Check if user already exists
-        const existingUser = await User.findOne({ email: email.toLowerCase() });
+        const existingUser = await User.findOne({ email: normalizedEmail });
         if (existingUser) {
             return res.status(400).json({
                 success: false,
@@ -43,8 +45,8 @@ exports.register = async (req, res) => {
 
         // Create user
         const user = await User.create({
-            name,
-            email: email.toLowerCase(),
+            name: name.trim(),
+            email: normalizedEmail,
             password: hashedPassword,
         });
 
@@ -62,6 +64,21 @@ exports.register = async (req, res) => {
             },
         });
     } catch (error) {
+        if (error.code === 11000) {
+            return res.status(400).json({
+                success: false,
+                message: 'User already exists with this email',
+            });
+        }
+
+        if (error.name === 'ValidationError') {
+            const messages = Object.values(error.errors).map((val) => val.message);
+            return res.status(400).json({
+                success: false,
+                message: messages.join(', '),
+            });
+        }
+
         res.status(500).json({
             success: false,
             message: error.message || 'Server error during registration',
@@ -84,8 +101,10 @@ exports.login = async (req, res) => {
             });
         }
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         // Check for user and explicitly include password field (select: false in schema)
-        const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
+        const user = await User.findOne({ email: normalizedEmail }).select('+password');
         if (!user) {
             return res.status(401).json({
                 success: false,
