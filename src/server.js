@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const userRoutes = require('./routes/authRoutes');
 
 // Load environment variables (checks src/.env and root .env)
 dotenv.config({ path: path.resolve(__dirname, '.env') });
@@ -20,6 +21,8 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/auth', userRoutes);
 
 // Start Server
 if (process.env.NODE_ENV !== 'test') {
