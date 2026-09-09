@@ -46,8 +46,8 @@ Template contents in `.env.example`:
 ```env
 PORT=5000
 NODE_ENV=development
-MONGO_URI=mongodb://127.0.0.1:27017/inventory_order_db
-JWT_SECRET=supersecret_jwt_key_for_dev_12345
+MONGO_URI=mongodb://localhost:27017/inventory_order_db
+JWT_SECRET=your_super_secret_jwt_key_here
 JWT_EXPIRE=1d
 ```
 
@@ -70,7 +70,6 @@ JWT_EXPIRE=1d
 | :--- | :--- | :--- | :--- |
 | `POST` | `/auth/register` | Public | Register a new user |
 | `POST` | `/auth/login` | Public | Log in user and receive JWT token |
-| `GET` | `/auth/me` | Private | Get authenticated user profile |
 
 ### Products (`/products`)
 | Method | Endpoint | Access | Description |
@@ -94,13 +93,13 @@ JWT_EXPIRE=1d
 
 All endpoints (Authentication, Products, and Orders) are ready for testing via Postman:
 
-🔗 **[View & Fork Postman Collection](https://vk8595422784-62024.postman.co/workspace/Game-Play-Station~1e748752-3704-413e-badb-01fe11b638d2/collection/51661528-043db042-07f2-4204-bb23-9628711b2d1a?action=share&source=copy-link&creator=51661528)**
+- 🔗 **Direct Link**: **[View Postman Collection](https://go.postman.co/collection/51661528-043db042-07f2-4204-bb23-9628711b2d1a?source=collection_link)**
+- 📁 **File Import**: You can also directly import the [`postman_collection.json`](postman_collection.json) file included in the root of this repository.
 
 ### Postman Testing Guide:
-1. Open the link above and view/fork the collection into your workspace.
-2. Set `baseUrl` to `http://localhost:5000`.
-3. First, call `POST /auth/login` (or `POST /auth/register`) to receive your JWT token.
-4. Pass the token as `Bearer <token>` under the **Authorization** tab for protected endpoints (`/auth/me` and `/orders`).
+1. Open the collection via the link above or import `postman_collection.json`.
+2. First, call `POST /auth/login` (or `POST /auth/register`) to receive your JWT token.
+3. Pass the token as `Bearer <token>` under the **Authorization** tab for protected endpoints (`/orders`).
 
 ---
 

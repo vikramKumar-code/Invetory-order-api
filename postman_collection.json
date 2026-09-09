@@ -1,0 +1,363 @@
+{
+  "info": {
+    "_postman_id": "043db042-07f2-4204-bb23-9628711b2d1a",
+    "name": "Inventory_Order_Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51661528",
+    "_collection_link": "https://go.postman.co/collection/51661528-043db042-07f2-4204-bb23-9628711b2d1a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n     \"email\": \"vikram123@gmail.com\",\r\n    \"password\": \"Vikram123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/api/auth/login' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Vikram\",\r\n    \"email\": \"vikram123@gmail.com\",\r\n    \"password\": \"Vikram123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/api/auth/register' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}'\r\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "createProduct",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Wireless Mechanical Keyboard\",\r\n    \"description\": \"RGB backlit mechanical keyboard with brown switches\",\r\n    \"price\": 89.99,\r\n    \"stockQuantity\": 25,\r\n    \"category\": \"Electronics\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/api/products' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"name\": \"Wireless Mechanical Keyboard\",\r\n    \"description\": \"RGB backlit mechanical keyboard with brown switches\",\r\n    \"price\": 89.99,\r\n    \"stockQuantity\": 25,\r\n    \"category\": \"Electronics\"\r\n}'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "updateProduct",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"price\": 79.99,\n    \"stockQuantity\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/products/6aa18f4448644a00afae8454",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products",
+                "6aa18f4448644a00afae8454"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request PATCH 'http://localhost:5000/api/products/<PRODUCT_ID>' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"price\": 79.99,\r\n    \"stockQuantity\": 30\r\n}'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "getProductById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/products/6aa18f4448644a00afae8454",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products",
+                "6aa18f4448644a00afae8454"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/api/products/<PRODUCT_ID>'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "getProductWithCategory",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/products?search=keyboard&category=Electronics&minPrice=50&maxPrice=150&page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "keyboard"
+                },
+                {
+                  "key": "category",
+                  "value": "Electronics"
+                },
+                {
+                  "key": "minPrice",
+                  "value": "50"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "150"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/api/products?search=keyboard&category=Electronics&minPrice=50&maxPrice=150&page=1&limit=10'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "getProduct",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/api/products'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "deleteProduct",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/products/6aa18f4448644a00afae8454",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products",
+                "6aa18f4448644a00afae8454"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request DELETE 'http://localhost:5000/api/products/<PRODUCT_ID>'\r\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "getOrder",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_JWT_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "orders"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/orders' \\\r\n--header 'Authorization: Bearer <YOUR_JWT_TOKEN>'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "createOrder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTE4MjczNTc5OWU1ZjYwMDJiMGM3MCIsImlhdCI6MTc4ODk2OTk4NywiZXhwIjoxNzg5MDU2Mzg3fQ.YAxlgSCJ4wk_uHtXPh8s29tnpPtcaAtmZ8R2x3WxWxk"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product\": \"6aa19bd5d914736d85a77f2a\",\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "orders"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/orders' \\\r\n--header 'Content-Type: application/json' \\\r\n--header 'Authorization: Bearer <YOUR_JWT_TOKEN>' \\\r\n--data '{\r\n    \"products\": [\r\n        {\r\n            \"product\": \"<PRODUCT_ID>\",\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}'\r\n"
+          },
+          "response": []
+        },
+        {
+          "name": "getOrderById",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTFhNjA2NWNmZTk2YjhkOGQ5NzdhZCIsImlhdCI6MTc4ODk3ODY5NCwiZXhwIjoxNzg5MDY1MDk0fQ.NTnrCIWQlxWYcOJtIiXxKcg4kJ1MMny9IRVCuCxYFNQ"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/orders/6aa1a7d05cfe96b8d8d977b0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "orders",
+                "6aa1a7d05cfe96b8d8d977b0"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:5000/orders/<ORDER_ID>' \\\r\n--header 'Authorization: Bearer <YOUR_JWT_TOKEN>'\r\n"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
