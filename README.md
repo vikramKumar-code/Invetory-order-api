@@ -31,23 +31,23 @@ A RESTful API built with **Node.js**, **Express**, and **MongoDB (Mongoose)** fo
 
 ### 2. Installation
 ```bash
-git clone <repository-url>
-cd inventory-order-api
+git clone https://github.com/vikramKumar-code/Invetory-order-api
+cd invetory-order-api
 npm install
 ```
 
 ### 3. Environment Variables
-Copy `.env.example` to `.env` in the root directory:
+A pre-configured template is provided in [`.env.example`](.env.example). Create your local `.env` file by copying the example:
 ```bash
 cp .env.example .env
 ```
 
-Configure the environment variables in `.env`:
+Template contents in `.env.example`:
 ```env
 PORT=5000
 NODE_ENV=development
 MONGO_URI=mongodb://127.0.0.1:27017/inventory_order_db
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=supersecret_jwt_key_for_dev_12345
 JWT_EXPIRE=1d
 ```
 
@@ -87,6 +87,20 @@ JWT_EXPIRE=1d
 | `POST` | `/orders` | Private | Create an order (verifies & deducts inventory stock) |
 | `GET` | `/orders` | Private | Get all orders of the logged-in user |
 | `GET` | `/orders/:id` | Private | Get a single order by ID |
+
+---
+
+## Postman Collection
+
+All endpoints (Authentication, Products, and Orders) are ready for testing via Postman:
+
+🔗 **[View & Fork Postman Collection](https://vk8595422784-62024.postman.co/workspace/Game-Play-Station~1e748752-3704-413e-badb-01fe11b638d2/collection/51661528-043db042-07f2-4204-bb23-9628711b2d1a?action=share&source=copy-link&creator=51661528)**
+
+### Postman Testing Guide:
+1. Open the link above and view/fork the collection into your workspace.
+2. Set `baseUrl` to `http://localhost:5000`.
+3. First, call `POST /auth/login` (or `POST /auth/register`) to receive your JWT token.
+4. Pass the token as `Bearer <token>` under the **Authorization** tab for protected endpoints (`/auth/me` and `/orders`).
 
 ---
 
